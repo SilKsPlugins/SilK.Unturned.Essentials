@@ -1,5 +1,8 @@
 ﻿Commands:
   Items:
+    Item:
+      Success: "You have been given x{Amount} {ItemAsset.ItemName}." # ItemAsset, Amount
+      Failure: "Failed to spawn x{Amount} {ItemAsset.ItemName}." # ItemAsset, Amount
   Errors:
     Input:
       NoItem: "The item '{Input}' could not be found."
