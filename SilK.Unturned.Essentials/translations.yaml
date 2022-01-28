@@ -14,6 +14,7 @@
       Success: "All items have been respawned." # No parameters
     SpawnItem:
       Success: "x{Amount} {ItemAsset.ItemName} have been spawned at the position X: {X} Y: {Y} Z: {Z}." # X, Y, Z, ItemAsset, Amount
+      Failure: "Failed to spawn x{Amount} {ItemAsset.ItemName} at the position X: {X} Y: {Y} Z: {Z}." # X, Y, Z, ItemAsset, Amount
 
   Vehicles:
     Vehicle:
