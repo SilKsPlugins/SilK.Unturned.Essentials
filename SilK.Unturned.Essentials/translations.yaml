@@ -1,1 +1,19 @@
-﻿
+﻿Commands:
+  Items:
+  Errors:
+    Input:
+      NoItem: "The item '{Input}' could not be found."
+      NoVehicle: "The vehicle '{Input}' could not be found."
+      NoPlayer: "The player '{Input}' could not be found."
+      NoLocation: "The player '{Input}' could not be found."
+      NoSteamID: "The input '{Input}' could not be parsed to a Steam 64 ID."
+      NoBoolean: "The input '{Input}' could not be parsed. It must be true or false."
+      NoShort: "The input '{Input}' could not be parsed to a number (without decimals)."
+      NoInteger: "The input '{Input}' could not be parsed to a number (without decimals)."
+      NoLong: "The input '{Input}' could not be parsed to a number (without decimals)."
+      NoUnsignedShort: "The input '{Input}' could not be parsed to a non-negative number (without decimals)."
+      NoUnsignedInteger: "The input '{Input}' could not be parsed to a non-negative number (without decimals)."
+      NoUnsignedLong: "The input '{Input}' could not be parsed to a non-negative number (without decimals)."
+      NoFloat: "The input '{Input}' could not be parsed to a decimal number."
+      NoDouble: "The input '{Input}' could not be parsed to a decimal number."
+      NoDecimal: "The input '{Input}' could not be parsed to a decimal number."
