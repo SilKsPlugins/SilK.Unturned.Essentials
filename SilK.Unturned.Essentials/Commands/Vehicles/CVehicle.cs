@@ -15,7 +15,7 @@ namespace SilK.Unturned.Essentials.Commands.Vehicles
     [UsedImplicitly]
     [Command("vehicle", Priority = Priority.Normal)]
     [CommandAlias("v")]
-    [CommandSyntax("<vehicle>")]
+    [CommandSyntax("<vehicle> [player]")]
     [CommandDescription("Spawns a vehicle.")]
     [CommandActor(typeof(UnturnedUser))]
     [LocalizationSection("Vehicles", "Vehicle")]
