@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using OpenMod.API.Ioc;
 using OpenMod.Core.Commands;
 using SilK.Unturned.Essentials.Commands.Items;
+using SilK.Unturned.Essentials.Commands.Vehicles;
 
 namespace SilK.Unturned.Essentials
 {
@@ -16,6 +17,7 @@ namespace SilK.Unturned.Essentials
             serviceCollection.Configure<CommandParameterResolverOptions>(options =>
             {
                 options.AddCommandParameterResolveProvider<UnturnedItemAssetCommandParameterResolveProvider>();
+                options.AddCommandParameterResolveProvider<UnturnedVehicleAssetCommandParameterResolveProvider>();
             });
         }
     }
