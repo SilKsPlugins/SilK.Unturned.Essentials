@@ -34,8 +34,6 @@ namespace SilK.Unturned.Essentials.Commands.Vehicles
         {
             player ??= UnturnedPlayer;
 
-            await UniTask.SwitchToMainThread();
-
             if (await _vehicleSpawner.SpawnVehicleAsync(player, vehicle.VehicleAssetId) == null)
             {
                 throw GetLocalizedFriendlyException("Failure", new { VehicleAsset = vehicle });
