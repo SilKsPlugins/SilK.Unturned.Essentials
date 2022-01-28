@@ -10,6 +10,8 @@
     RepairHand:
       Success: "The {ItemAsset.ItemName} in your hand has been repaired." # ItemAsset
       NoEquipped: "You do not have an item in your hands." # No parameters
+    RespawnItems:
+      Success: "All items have been respawned." # No parameters
   Errors:
     Input:
       NoItem: "The item '{Input}' could not be found."
