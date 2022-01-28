@@ -15,6 +15,11 @@
     SpawnItem:
       Success: "x{Amount} {ItemAsset.ItemName} have been spawned at the position X: {X} Y: {Y} Z: {Z}." # X, Y, Z, ItemAsset, Amount
 
+  Vehicles:
+    Vehicle:
+      Success: "You have spawned a {VehicleAsset.VehicleName}." # VehicleAsset
+      Failure: "Failed to spawn a {VehicleAsset.VehicleName}." # VehicleAsset
+
   Errors:
     Input:
       NoItem: "The item '{Input}' could not be found."
