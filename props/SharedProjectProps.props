@@ -12,17 +12,21 @@
     <RepositoryUrl>https://github.com/SilKsPlugins/SilK.Unturned.Essentials</RepositoryUrl>
   </PropertyGroup>
 
-    <PropertyGroup>
-        <Authors>Stephen White</Authors>
-        <Company>SilK's Plugins</Company>
-    </PropertyGroup>
+  <PropertyGroup>
+    <Authors>Stephen White</Authors>
+    <Company>SilK's Plugins</Company>
+    <Copyright>Copyright © Stephen White 2021</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>0.0.0</Version>
+  </PropertyGroup>
 
   <PropertyGroup>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateNugetPackage>true</GenerateNugetPackage>
   </PropertyGroup>
-
 
   <Target Name="ChangeAliasesOfNugetRefs" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
     <ItemGroup>

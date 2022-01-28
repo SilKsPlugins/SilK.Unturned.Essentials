@@ -6,6 +6,13 @@
 
   <Import Project="$(MSBuildThisFileDirectory)..\props\SharedProjectProps.props" />
 
+  <PropertyGroup>
+    <PackageId>$(AssemblyName)</PackageId>
+    <PackageDescription>An OpenMod plugin for Unturned which contains essential functionality for servers.</PackageDescription>
+    <PackageAuthor>Stephen White</PackageAuthor>
+    <PackageTags>openmod openmod-plugin unturned essentials</PackageTags>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="config.yaml" />
     <None Remove="translations.yaml" />
