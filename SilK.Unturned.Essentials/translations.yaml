@@ -19,6 +19,11 @@
     Vehicle:
       Success: "You have spawned a {VehicleAsset.VehicleName}." # VehicleAsset
       Failure: "Failed to spawn a {VehicleAsset.VehicleName}." # VehicleAsset
+    RefuelVehicle:
+      Success: "The {Vehicle.Asset.VehicleName} has been refueled." # Vehicle
+      NoVehicle: "You are not in or looking at a vehicle."
+    RefuelVehicleAll:
+      Success: "{Amount} vehicles have been refueled."
 
   Errors:
     Input:
