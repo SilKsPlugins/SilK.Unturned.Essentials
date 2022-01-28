@@ -17,14 +17,22 @@
       Failure: "Failed to spawn x{Amount} {ItemAsset.ItemName} at the position X: {X} Y: {Y} Z: {Z}." # X, Y, Z, ItemAsset, Amount
 
   Vehicles:
+    RefuelVehicle:
+      Success: "The {Vehicle.Asset.VehicleName} has been refueled." # Vehicle
+      NoVehicle: "You are not in or looking at a vehicle." # No parameters
+    RefuelVehicleAll:
+      Success: "{Amount} vehicles have been refueled." # Amount
+    RepairVehicle:
+      Success: "The {Vehicle.Asset.VehicleName} has been repaired." # Vehicle
+      NoVehicle: "You are not in or looking at a vehicle." # No parameters
+    RepairVehicleAll:
+      Success: "{Amount} vehicles have been repaired." # Amount
+    SpawnVehicle:
+      Success: "A {VehicleAsset.VehicleName} has been spawned at the position X: {X} Y: {Y} Z: {Z}." # X, Y, Z, VehicleAsset
+      Failure: "Failed to spawn a {VehicleAsset.VehicleName} at the position X: {X} Y: {Y} Z: {Z}." # X, Y, Z, VehicleAsset
     Vehicle:
       Success: "You have spawned a {VehicleAsset.VehicleName}." # VehicleAsset
       Failure: "Failed to spawn a {VehicleAsset.VehicleName}." # VehicleAsset
-    RefuelVehicle:
-      Success: "The {Vehicle.Asset.VehicleName} has been refueled." # Vehicle
-      NoVehicle: "You are not in or looking at a vehicle."
-    RefuelVehicleAll:
-      Success: "{Amount} vehicles have been refueled."
 
   Errors:
     Input:
