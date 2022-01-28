@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\props\SharedProjectProps.props" />
+
+  <ItemGroup>
+    <None Remove="config.yaml" />
+    <None Remove="translations.yaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="translations.yaml" />
+    <EmbeddedResource Include="config.yaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenMod.Unturned" Version="3.2.8" />
+    <PackageReference Include="SilK.Unturned.Extras" Version="1.7.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="API\" />
+  </ItemGroup>
+
+</Project>
