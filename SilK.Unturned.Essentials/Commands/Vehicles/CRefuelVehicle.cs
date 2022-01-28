@@ -14,7 +14,7 @@ namespace SilK.Unturned.Essentials.Commands.Vehicles
     [Command("refuelvehicle", Priority = Priority.Normal)]
     [CommandAlias("refuel")]
     [CommandSyntax("[all]")]
-    [CommandDescription("Refuels the vehicle you are in or all vehicles.")]
+    [CommandDescription("Refuels the vehicle you are in or are looking at.")]
     [CommandActor(typeof(UnturnedUser))]
     [LocalizationSection("Vehicles", "RefuelVehicle")]
     public class CRefuelVehicle : EssentialsCommand
