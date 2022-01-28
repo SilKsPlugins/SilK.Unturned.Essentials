@@ -5,6 +5,11 @@
       Failure: "Failed to spawn x{Amount} {ItemAsset.ItemName}." # ItemAsset, Amount
     ItemInfo:
       Success: "ID: {ItemAsset.ItemAssetId}, Name: {ItemAsset.ItemName}\nDescription: {ItemAsset.ItemAsset.itemDescription}\nType: {ItemAsset.ItemType}" # ItemAsset
+    Repair:
+      Success: "x{Amount} items in your inventory have been repaired." # Amount
+    RepairHand:
+      Success: "The {ItemAsset.ItemName} in your hand has been repaired." # ItemAsset
+      NoEquipped: "You do not have an item in your hands." # No parameters
   Errors:
     Input:
       NoItem: "The item '{Input}' could not be found."
