@@ -4,11 +4,9 @@ using JetBrainsAnnotations::JetBrains.Annotations;
 using OpenMod.API.Prioritization;
 using OpenMod.Core.Commands;
 using OpenMod.Unturned.Users;
-using OpenMod.Unturned.Vehicles;
-using SDG.Unturned;
+using SilK.Unturned.Essentials.Helpers;
 using SilK.Unturned.Essentials.Localization;
 using System;
-using UnityEngine;
 
 namespace SilK.Unturned.Essentials.Commands.Vehicles
 {
@@ -29,10 +27,8 @@ namespace SilK.Unturned.Essentials.Commands.Vehicles
         protected async UniTask OnExecuteAsync()
         {
             await UniTask.SwitchToMainThread();
-
-            var vehicle = UnturnedPlayer.CurrentVehicle;
-
-            vehicle ??= GetVehicleFromLook();
+            
+            var vehicle = UnturnedPlayer.CurrentVehicle ?? RaycastHelper.GetVehicleFromLook(UnturnedPlayer);
 
             if (vehicle == null)
             {
@@ -42,25 +38,6 @@ namespace SilK.Unturned.Essentials.Commands.Vehicles
             vehicle.Vehicle.askFillFuel(ushort.MaxValue);
 
             await PrintLocalizedAsync("Success", new { Vehicle = vehicle });
-        }
-
-        private UnturnedVehicle? GetVehicleFromLook()
-        {
-            const float maxVehicleDistance = 8;
-
-            var nativePlayer = UnturnedPlayer.Player;
-
-            Physics.Raycast(nativePlayer.look.aim.position, nativePlayer.look.aim.forward, out var raycastHit, maxVehicleDistance,
-                RayMasks.VEHICLE);
-
-            if (raycastHit.transform == null)
-            {
-                return null;
-            }
-
-            var vehicle = raycastHit.transform.GetComponent<InteractableVehicle>();
-
-            return vehicle == null ? null : new UnturnedVehicle(vehicle);
         }
     }
 }
