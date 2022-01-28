@@ -3,6 +3,8 @@
     Item:
       Success: "You have been given x{Amount} {ItemAsset.ItemName}." # ItemAsset, Amount
       Failure: "Failed to spawn x{Amount} {ItemAsset.ItemName}." # ItemAsset, Amount
+    ItemInfo:
+      Success: "ID: {ItemAsset.ItemAssetId}, Name: {ItemAsset.ItemName}\nDescription: {ItemAsset.ItemAsset.itemDescription}\nType: {ItemAsset.ItemType}" # ItemAsset
   Errors:
     Input:
       NoItem: "The item '{Input}' could not be found."
