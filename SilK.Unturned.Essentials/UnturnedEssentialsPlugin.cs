@@ -1,6 +1,7 @@
 ﻿extern alias JetBrainsAnnotations;
 using Cysharp.Threading.Tasks;
 using JetBrainsAnnotations::JetBrains.Annotations;
+using Microsoft.Extensions.Logging;
 using OpenMod.API.Plugins;
 using OpenMod.Unturned.Plugins;
 using SilK.Unturned.Essentials.Components;
@@ -19,8 +20,17 @@ namespace SilK.Unturned.Essentials
         {
             _pluginComponentManager = new PluginComponentManager(this);
         }
+
         protected override async UniTask OnLoadAsync()
         {
+            Logger.LogInformation("");
+            Logger.LogInformation("--------------------------------------------------------------------");
+            Logger.LogInformation("> Loading SilK's Unturned Essentials");
+            Logger.LogInformation("--------------------------------------------------------------------");
+            Logger.LogInformation("For more support, idea/feature requests, or to check out my plugins:");
+            Logger.LogInformation("Join my Discord server - https://discord.gg/c8Qr7drK4m");
+            Logger.LogInformation("--------------------------------------------------------------------");
+            Logger.LogInformation("");
 
             await _pluginComponentManager.LoadAsync();
         }
