@@ -19,6 +19,7 @@ namespace SilK.Unturned.Essentials.IoC
             {
                 options.AddCommandParameterResolveProvider<UnturnedItemAssetCommandParameterResolveProvider>();
                 options.AddCommandParameterResolveProvider<UnturnedVehicleAssetCommandParameterResolveProvider>();
+                options.AddCommandParameterResolveProvider<WarpLocationCommandParameterResolveProvider>();
             });
         }
     }
