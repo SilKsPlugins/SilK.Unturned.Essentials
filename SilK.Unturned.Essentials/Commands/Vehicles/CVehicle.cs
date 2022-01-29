@@ -7,7 +7,6 @@ using OpenMod.Core.Commands;
 using OpenMod.Core.Permissions;
 using OpenMod.Extensions.Games.Abstractions.Vehicles;
 using OpenMod.Unturned.Players;
-using OpenMod.Unturned.Users;
 using OpenMod.Unturned.Vehicles;
 using SilK.Unturned.Essentials.Localization;
 using System;
@@ -19,7 +18,6 @@ namespace SilK.Unturned.Essentials.Commands.Vehicles
     [CommandAlias("v")]
     [CommandSyntax("<vehicle> [player]")]
     [CommandDescription("Spawns a vehicle.")]
-    [CommandActor(typeof(UnturnedUser))]
     [LocalizationSection("Vehicles", "Vehicle")]
     [RegisterCommandPermission(OtherPermission, DefaultGrant = PermissionGrantResult.Deny,
         Description = "Allows spawning of vehicles for other players.")]
