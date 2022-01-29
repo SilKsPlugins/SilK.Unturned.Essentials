@@ -20,11 +20,8 @@
 
   <ItemGroup>
     <PackageReference Include="OpenMod.Unturned" Version="3.2.8" />
+    <PackageReference Include="SilK.OpenMod.Unturned.Extended" Version="1.0.0" />
     <PackageReference Include="SilK.Unturned.Extras" Version="1.7.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="API\" />
   </ItemGroup>
 
 </Project>
