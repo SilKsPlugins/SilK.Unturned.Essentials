@@ -1,8 +1,10 @@
 ﻿extern alias JetBrainsAnnotations;
 using Cysharp.Threading.Tasks;
 using JetBrainsAnnotations::JetBrains.Annotations;
+using OpenMod.API.Permissions;
 using OpenMod.API.Prioritization;
 using OpenMod.Core.Commands;
+using OpenMod.Core.Permissions;
 using OpenMod.Extensions.Games.Abstractions.Vehicles;
 using OpenMod.Unturned.Players;
 using OpenMod.Unturned.Users;
@@ -19,8 +21,12 @@ namespace SilK.Unturned.Essentials.Commands.Vehicles
     [CommandDescription("Spawns a vehicle.")]
     [CommandActor(typeof(UnturnedUser))]
     [LocalizationSection("Vehicles", "Vehicle")]
+    [RegisterCommandPermission(OtherPermission, DefaultGrant = PermissionGrantResult.Deny,
+        Description = "Allows spawning of vehicles for other players.")]
     public class CVehicle : EssentialsCommand
     {
+        private const string OtherPermission = "other";
+
         private readonly IVehicleSpawner _vehicleSpawner;
 
         public CVehicle(IServiceProvider serviceProvider,
@@ -32,6 +38,11 @@ namespace SilK.Unturned.Essentials.Commands.Vehicles
         [UsedImplicitly]
         protected async UniTask OnExecuteAsync(UnturnedVehicleAsset vehicle, UnturnedPlayer? player = null)
         {
+            if (player != null && await CheckPermissionAsync(OtherPermission) == PermissionGrantResult.Deny)
+            {
+                throw new NotEnoughPermissionException(Context, OtherPermission);
+            }
+
             player ??= UnturnedPlayer;
 
             if (await _vehicleSpawner.SpawnVehicleAsync(player, vehicle.VehicleAssetId) == null)
