@@ -53,8 +53,8 @@ namespace SilK.Unturned.Essentials.Commands
         }
 
         protected UnturnedUser UnturnedUser => Context.Actor as UnturnedUser ??
-                                               throw new Exception(
-                                                   $"Command actor is not of type {nameof(UnturnedUser)}");
+                                               throw new CommandWrongActorException(
+                                                   ErrorsStringLocalizer["WrongActor:Player"]);
 
         protected UnturnedPlayer UnturnedPlayer => UnturnedUser.Player;
 
