@@ -8,6 +8,7 @@ using OpenMod.Unturned.Items;
 using OpenMod.Unturned.Users;
 using SilK.Unturned.Essentials.Localization;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 
 namespace SilK.Unturned.Essentials.Commands.Items
@@ -30,7 +31,9 @@ namespace SilK.Unturned.Essentials.Commands.Items
         }
 
         [UsedImplicitly]
-        protected async UniTask OnExecuteAsync(float x, float y, float z, UnturnedItemAsset item, int amount = 1)
+        protected async UniTask OnExecuteAsync(float x, float y, float z, UnturnedItemAsset item,
+            [Range(1, int.MaxValue)] int amount = 1)
+
         {
             var success = true;
 
