@@ -29,6 +29,8 @@ namespace SilK.Unturned.Essentials.Commands
     [LocalizationSection("Commands")]
     public abstract class EssentialsCommand : UnturnedParameterizedCommand
     {
+        protected readonly UnturnedEssentialsPlugin Plugin;
+
         protected readonly IStringLocalizer GlobalStringLocalizer;
 
         protected readonly IStringLocalizer CommandsStringLocalizer;
@@ -41,6 +43,7 @@ namespace SilK.Unturned.Essentials.Commands
 
         protected EssentialsCommand(IServiceProvider serviceProvider) : base(serviceProvider)
         {
+            Plugin = serviceProvider.GetRequiredService<UnturnedEssentialsPlugin>();
             GlobalStringLocalizer = serviceProvider.GetRequiredService<IStringLocalizer>();
             CommandsStringLocalizer = GetSubSectionStringLocalizer(GlobalStringLocalizer, typeof(EssentialsCommand));
             ErrorsStringLocalizer = new SubStringLocalizer(CommandsStringLocalizer, "Errors");
