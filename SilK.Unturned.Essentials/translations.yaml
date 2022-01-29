@@ -1,4 +1,30 @@
 ﻿Commands:
+  Kill:
+    Kill:
+      Success: "You have killed yourself." # No parameters
+      SuccessOther: "{Player.DisplayName} has been killed." # Player
+    KillAll:
+      Success: "{Amount} players have been killed." # Amount
+    KillAnimals:
+      Success: "{Amount} animals have been killed." # Amount
+    KillZombies:
+      Success: "{Amount} animals have been killed." # Amount
+
+  Movement:
+    Ascend:
+      Success: "You have been teleported upwards {Distance} metres." # Distance
+      Failure: "Unable to teleport you upwards {Distance} metres." # Distance
+    Descend:
+      Success: "You have been teleported downwards {Distance} metres." # Distance
+      Failure: "Unable to teleport you downwards {Distance} metres." # Distance
+    Jump:
+      Success: "You have been teleported to where you were looking." # MaxDistance
+      NoPoint: "You are not looking at a point within {MaxDistance} metres." # MaxDistance
+      Failure: "Unable to teleport you to the point you were looking at." # MaxDistance
+    Position:
+      Success: "Your position is X: {X} Y: {Y} Z: {Z}." # X, Y, Z
+      SuccessOther: "{Player.DisplayName}'s position is X: {X} Y: {Y} Z: {Z}." # X, Y, Z, Player
+
   Items:
     Item:
       Success: "You have been given x{Amount} {ItemAsset.ItemName}." # ItemAsset, Amount
@@ -32,10 +58,20 @@
       Failure: "Failed to spawn a {VehicleAsset.VehicleName} at the position X: {X} Y: {Y} Z: {Z}." # X, Y, Z, VehicleAsset
     Vehicle:
       Success: "You have spawned a {VehicleAsset.VehicleName}." # VehicleAsset
+      SuccessOther: "You have spawned a {VehicleAsset.VehicleName} for {Player.DisplayName}." # DisplayName
       Failure: "Failed to spawn a {VehicleAsset.VehicleName}." # VehicleAsset
 
+  Warps:
+    Warp:
+      Success: "You have been teleported to the {Warp.Name} warp." # Warp
+      Failure: "Unable to teleport you to the {Warp.Name} warp." # Warp
+      Cooldown: "You must wait {TimeLeft} until you can use the {Warp.Name} warp again." # Warp, TimeLeft
+    WarpAdd:
+      SuccessAdd: "A new warp named {WarpName} has been added (cooldown: {Cooldown})." # WarpName, Cooldown
+      SuccessUpdate: "The existing warp named {WarpName} has been updated (cooldown: {Cooldown})." # WarpName, Cooldown
+
   Errors:
-    Input:
+    Input: # All the following have the Input parameter
       NoItem: "The item '{Input}' could not be found."
       NoVehicle: "The vehicle '{Input}' could not be found."
       NoPlayer: "The player '{Input}' could not be found."
@@ -51,3 +87,9 @@
       NoFloat: "The input '{Input}' could not be parsed to a decimal number."
       NoDouble: "The input '{Input}' could not be parsed to a decimal number."
       NoDecimal: "The input '{Input}' could not be parsed to a decimal number."
+      OutOfRange:
+        LowerBound: "The {ParameterName} must be greater than or equal to {LowerBound} (input: {Input})." # ParameterName, LowerBound
+        UpperBound: "The {ParameterName} must be less than or equal to {UpperBound} (input: {Input})." # ParameterName, UpperBound
+        BothBounds: "The {ParameterName} must be greater than or equal to {LowerBound} and less than or equal to {UpperBound} (input: {Input})." # ParameterName, LowerBound, UpperBound
+    WrongActor:
+      Player: "You must be a player to use this command."
