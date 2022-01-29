@@ -19,6 +19,7 @@ using SilK.Unturned.Extras.Configuration;
 using Steamworks;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -32,6 +33,8 @@ namespace SilK.Unturned.Essentials.Commands
 
         protected readonly IStringLocalizer CommandsStringLocalizer;
 
+        protected readonly IStringLocalizer ErrorsStringLocalizer;
+
         protected readonly IStringLocalizer StringLocalizer;
 
         protected readonly IConfigurationParser<UnturnedEssentialsConfiguration> Configuration;
@@ -40,6 +43,7 @@ namespace SilK.Unturned.Essentials.Commands
         {
             GlobalStringLocalizer = serviceProvider.GetRequiredService<IStringLocalizer>();
             CommandsStringLocalizer = GetSubSectionStringLocalizer(GlobalStringLocalizer, typeof(EssentialsCommand));
+            ErrorsStringLocalizer = new SubStringLocalizer(CommandsStringLocalizer, "Errors");
             StringLocalizer = GetSubSectionStringLocalizer(GlobalStringLocalizer, GetType());
 
             Configuration = serviceProvider.GetRequiredService<IConfigurationParser<UnturnedEssentialsConfiguration>>();
@@ -53,6 +57,54 @@ namespace SilK.Unturned.Essentials.Commands
 
         protected override Task ExecuteMethod(MethodInfo method, object[] parameters)
         {
+            void VerifyParameter(ParameterInfo parameterInfo, object parameterValue)
+            {
+                var attributes = parameterInfo.GetCustomAttributes();
+
+                foreach (var attribute in attributes)
+                {
+                    switch (attribute)
+                    {
+                        case RangeAttribute rangeAttribute:
+                            if (!rangeAttribute.IsValid(parameterValue))
+                            {
+                                var hasUpperBound = rangeAttribute is { Maximum: int.MaxValue } or
+                                    { Maximum: float.MaxValue };
+
+                                var hasLowerBound = rangeAttribute is { Minimum: int.MinValue } or
+                                    { Minimum: float.MinValue };
+
+                                var translationName = hasUpperBound switch
+                                {
+                                    true when hasLowerBound => "Input:OutOfRange:BothBounds",
+                                    true => "Input:OutOfRange:UpperBound",
+                                    _ => "Input:OutOfRange:LowerBound"
+                                };
+
+                                throw new CommandArgumentOutOfRangeException(
+                                    ErrorsStringLocalizer[translationName,
+                                        new
+                                        {
+                                            Input = parameterValue,
+                                            ParameterName = parameterInfo.Name,
+                                            LowerBound = rangeAttribute.Minimum,
+                                            UpperBound = rangeAttribute.Maximum
+                                        }]);
+                            }
+
+                            break;
+                    }
+                }
+            }
+
+            var parameterInfos = method.GetParameters();
+
+            // Verify parameters based on custom needs
+            for (var i = 0; i < parameterInfos.Length && i < parameters.Length; i++)
+            {
+                VerifyParameter(parameterInfos[i], parameters[i]);
+            }
+
             try
             {
                 return base.ExecuteMethod(method, parameters);
@@ -88,8 +140,7 @@ namespace SilK.Unturned.Essentials.Commands
 
                 if (customLocalizedMessageNames.TryGetValue(ex.ExpectedType, out var messageName))
                 {
-                    throw new UserFriendlyException(CommandsStringLocalizer[$"Errors:{messageName}",
-                        new { Input = ex.Argument }]);
+                    throw new UserFriendlyException(ErrorsStringLocalizer[messageName, new { Input = ex.Argument }]);
                 }
 
                 throw new CommandWrongUsageException(Context);
