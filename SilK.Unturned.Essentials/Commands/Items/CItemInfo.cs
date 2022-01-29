@@ -3,7 +3,6 @@ using Cysharp.Threading.Tasks;
 using JetBrainsAnnotations::JetBrains.Annotations;
 using OpenMod.API.Prioritization;
 using OpenMod.Core.Commands;
-using OpenMod.Extensions.Games.Abstractions.Items;
 using OpenMod.Unturned.Items;
 using OpenMod.Unturned.Users;
 using SilK.Unturned.Essentials.Localization;
@@ -13,6 +12,7 @@ namespace SilK.Unturned.Essentials.Commands.Items
 {
     [UsedImplicitly]
     [Command("iteminfo", Priority = Priority.Normal)]
+    [CommandAlias("ii")]
     [CommandDescription("Shows info of an item.")]
     [CommandActor(typeof(UnturnedUser))]
     [LocalizationSection("Items", "ItemInfo")]
